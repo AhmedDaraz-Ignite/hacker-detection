@@ -1,6 +1,6 @@
-# hacker-detection
+# Hacker-detection
 
-## prerequisites
+## Prerequisites
   * install maven to build the code
   * run mvn clean package
   * from generated jar file, you can run "java App --logfile=C:\temp\in\file.log"
