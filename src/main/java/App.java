@@ -12,6 +12,11 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.stream.Collectors;
 
+/**
+ * @author Ahmed.Rabie
+ *
+ * Main application entry point, it initialize application threads and comunication channels.
+ */
 @Slf4j
 public class App {
 

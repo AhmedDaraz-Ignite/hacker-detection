@@ -7,6 +7,11 @@ import org.apache.commons.io.input.TailerListenerAdapter;
 import java.util.HashMap;
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * @author Ahmed.Rabie
+ * Partitioner class to loadbalance the events based on thier IP,
+ * to ensure all events for same IP address forwarded to same Thread handler.
+ */
 @Slf4j
 public class Partitioner extends TailerListenerAdapter {
 

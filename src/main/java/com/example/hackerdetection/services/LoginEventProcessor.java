@@ -4,6 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * @author Ahmed.Rabie
+ * The log event processor, parsre the event and check the returned IP if it is a threat or not.
+ */
 @Slf4j
 public class LoginEventProcessor implements Runnable {
 

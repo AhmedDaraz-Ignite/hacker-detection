@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+/**
+ * @author Ahmed.Rabie
+ * data access repository.
+ */
 public class LoginEventRepository {
 
     private Map<String, Deque<LoginEvent>> attempts = new HashMap<>();

@@ -5,6 +5,11 @@ import com.example.hackerdetection.repository.LoginEventRepository;
 
 import java.util.Deque;
 
+/**
+ * @author Ahmed.Rabie
+ * Hacker detection service, it has access to a nosql data storage with the IP, DEQUEUE of max of 5 items length.
+ * It get th time difference to calculate the time window and decide if the IP is a potential threat or not.
+ */
 public class HackerDetectorService implements HackerDetector {
 
     private LoginEventRepository repository = new LoginEventRepository();
