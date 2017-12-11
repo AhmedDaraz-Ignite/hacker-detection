@@ -3,7 +3,7 @@
 ## prerequisites
   * install maven to build the code
   * run mvn clean package
-  * from generated jar file, you can run "--logfile="java App C:\temp\in\New Text Document.txt"
+  * from generated jar file, you can run "java App --logfile=C:\temp\in\file.log"
   
 I use plugin Lomobok, it is a compile time annotation processor plugin, in order to avoid compilation errors in IDE (eclipse, intiliJ)
 install the plugins on the related IDE.
