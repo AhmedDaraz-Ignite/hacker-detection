@@ -38,7 +38,7 @@ public class HackerDetectorServiceTest {
         detector.parseLogLine("1507365537,187.218.83.136,John.Smith,FAILURE");
         detector.parseLogLine("1507365837,187.218.83.136,John.Smith,FAILURE");
 
-        String emptyString = detector.parseLogLine("1507366037,187.218.83.136,John.Smith,FAILURE");
-        assertTrue("187.218.83.136".equals(emptyString));
+        String ip = detector.parseLogLine("1507366037,187.218.83.136,John.Smith,FAILURE");
+        assertTrue("187.218.83.136".equals(ip));
     }
 }
