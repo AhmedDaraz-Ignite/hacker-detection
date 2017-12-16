@@ -13,8 +13,14 @@ import java.util.Deque;
 public class HackerDetectorService implements HackerDetector {
 
     private LoginEventRepository repository = new LoginEventRepository();
-    private static final int MAX_ATTEMPTS = 5;
     private static final String EMPTY_STRING = "";
+    private long timeWindow;
+    private int maxAttempts;
+
+    public HackerDetectorService(long timeWindow, int maxAttempts) {
+        this.timeWindow = timeWindow;
+        this.maxAttempts = maxAttempts;
+    }
 
     public String parseLogLine(String line) {
 
@@ -22,18 +28,24 @@ public class HackerDetectorService implements HackerDetector {
 
         if(LoginEvent.LoginAction.FAILURE.equals(event.getAction())) {
             repository.saveLoginEvent(event);
-            Deque<LoginEvent> loginAttempts = repository.findLoginEventsByIP(event.getIp());
-            if(loginAttempts.size() >= MAX_ATTEMPTS) {
-                if((loginAttempts.getLast().getEventTime() - loginAttempts.getFirst().getEventTime()) % 5000 <= 0) {
-                    loginAttempts.removeLast();
-                    loginAttempts.add(event);
-                    return event.getIp();
-                } else {
-                    loginAttempts.removeLast();
-                    loginAttempts.add(event);
-                }
+        }
+
+        Deque<LoginEvent> loginAttempts = repository.findLoginEventsByIP(event.getIp());
+        if(loginAttempts.size() >= maxAttempts) {
+            if(getTimeDifference(loginAttempts) / timeWindow == 0) {
+                loginAttempts.removeLast();
+                loginAttempts.add(event);
+                return event.getIp();
+            } else {
+                loginAttempts.removeLast();
+                loginAttempts.add(event);
             }
         }
+
         return EMPTY_STRING;
+    }
+
+    private long getTimeDifference(Deque<LoginEvent> loginAttempts) {
+        return loginAttempts.getLast().getEventTime() - loginAttempts.getFirst().getEventTime();
     }
 }

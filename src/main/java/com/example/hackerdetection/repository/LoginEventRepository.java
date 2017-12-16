@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * @author Ahmed.Rabie
- * data access repository.
+ * data access repository. currently it is backed by Hashmap, but in reality it will be backed by NoSql storage.
  */
 public class LoginEventRepository {
 

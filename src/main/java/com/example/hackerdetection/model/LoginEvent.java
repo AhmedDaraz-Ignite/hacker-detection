@@ -11,14 +11,13 @@ public class LoginEvent {
 
     public enum LoginAction  {SUCCESS, FAILURE};
 
-    private String ip;
     private long eventTime;
+    private String ip;
     private LoginAction action;
-    private String userName;
 
     public static LoginEvent from(String rawEvent) {
         final String[] tokens = rawEvent.split(",");
-        LoginEvent event = new LoginEvent(tokens[1], Long.parseLong(tokens[0]), LoginAction.valueOf(tokens[3]), tokens[2]);
+        LoginEvent event = new LoginEvent(Long.parseLong(tokens[0]), tokens[1], LoginAction.valueOf(tokens[3]));
         return event;
     }
 }
